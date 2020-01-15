@@ -9,7 +9,7 @@
 import java.util.Scanner;
 public class Craps
 {
-    public static void giveInstructioons()
+    public static void giveInstructions()
     {
     Scanner in = new Scanner(System.in);
     System.out.println("Do you want instructions for craps? Y/N");
@@ -26,11 +26,62 @@ public class Craps
     }
    
 }
-        
+public static int rollTheDice(Scanner in, Die die)
+{
+    System.out.println("Press enter to roll the dice");
+    in.nextLine(); //no imput needs to be saved
+    int result1 = die.roll();
+    int result2 = die.roll();
+    int total = result1 + result2;
+    System.out.println("you rolled a " + result1 + "and a " + result2 + "for a total of " + total);
+    
+}
     // instance variables - replace the example below with your own
 public static void Main(String[]args)
 {
     Scanner in = new Scanner(System.in);
+    Die die = new Die();
+    System.out.println("The game of craps!");
+    giveInstructions(in);
+    System.out.println("Lets play!");
     
+    String Status = "y";
+    while(Status.equals("y"))
+    {
+      System.out.println("first roll");
+      int result = rollTheDice(in,d);
+      if (result == 7 || result == 11)
+      {
+          System.out.println("you win!! :D ");
+        }
+      if (result == 3 || result == 2 || result == 12)
+      {
+          System.out.println("you loose :/");
+        }
+      else 
+      {
+          System.out.println("rolling the point now!");
+          int point = result;
+          System.out.println("your point is " + point + ". Try to roll it again!");
+          result = rollTheDice(in, die);
+      while (result != 7 && result != point)
+      {
+              System.out.println("roll again");
+              result = rollTheDice(in,Die);
+      }
+      if (
+      System.out.println("would you like to play again (Y/N)");
+      Status = in.nextLine();
+      if (Status.equals (" ")) 
+      {
+          Status.equals("y");
+        }
+      else 
+      { 
+          Status.equals("N");
+        }
+    }
+    System.out.println("Thank you for playing");
+  }
 }
 }
