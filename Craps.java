@@ -9,9 +9,9 @@
 import java.util.Scanner;
 public class Craps
 {
-    public static void giveInstructions()
+    public static void giveInstructions(Scanner in)
     {
-    Scanner in = new Scanner(System.in);
+    
     System.out.println("Do you want instructions for craps? Y/N");
     String Answer = in.nextLine();
     if (Answer.equals(" ")|| Answer.substring(0,1).equalsIgnoreCase("Y"))//puting the substirng bc then there is 
@@ -34,22 +34,22 @@ public static int rollTheDice(Scanner in, Die die)
     int result2 = die.roll();
     int total = result1 + result2;
     System.out.println("you rolled a " + result1 + "and a " + result2 + "for a total of " + total);
-    
+    return total;
 }
     // instance variables - replace the example below with your own
 public static void Main(String[]args)
 {
-    Scanner in = new Scanner(System.in);
+       Scanner in = new Scanner(System.in);
     Die die = new Die();
     System.out.println("The game of craps!");
     giveInstructions(in);
     System.out.println("Lets play!");
     
     String Status = "y";
-    while(Status.equals("y"))
+    while(Status.substring(0,1).equalsIgnoreCase("y"))
     {
       System.out.println("first roll");
-      int result = rollTheDice(in,d);
+      int result = rollTheDice(in,die);
       if (result == 7 || result == 11)
       {
           System.out.println("you win!! :D ");
@@ -67,12 +67,20 @@ public static void Main(String[]args)
       while (result != 7 && result != point)
       {
               System.out.println("roll again");
-              result = rollTheDice(in,Die);
+              result = rollTheDice(in,die);
       }
-      if (
+      if (result == 7)
+      {
+          System.out.println("LOSE!");
+        }
+      if (result == point)
+      {
+          System.out.println("YOU WIN yay!");
+        }
+   
       System.out.println("would you like to play again (Y/N)");
       Status = in.nextLine();
-      if (Status.equals (" ")) 
+      if (Status.equals (" ") || Status.substring(0,1).equalsIgnoreCase("y")) 
       {
           Status.equals("y"); //here you are
         }
