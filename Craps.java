@@ -74,7 +74,7 @@ public static void Main(String[]args)
       Status = in.nextLine();
       if (Status.equals (" ")) 
       {
-          Status.equals("y");
+          Status.equals("y"); //here you are
         }
       else 
       { 
