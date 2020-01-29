@@ -54,7 +54,7 @@ public static void Main(String[]args)
       {
           System.out.println("you win!! :D ");
         }
-      if (result == 3 || result == 2 || result == 12)
+      else if (result == 3 || result == 2 || result == 12)
       {
           System.out.println("you loose :/");
         }
@@ -77,19 +77,11 @@ public static void Main(String[]args)
       {
           System.out.println("YOU WIN yay!");
         }
-   
+    }
       System.out.println("would you like to play again (Y/N)");
       Status = in.nextLine();
-      if (Status.equals (" ") || Status.substring(0,1).equalsIgnoreCase("y")) 
-      {
-          Status.equals("y"); //here you are
-        }
-      else 
-      { 
-          Status.equals("N");
-        }
-    }
-    System.out.println("Thank you for playing");
+      if (Status.equals (" ")) { Status = "y";}
   }
+  System.out.println("Thank you for playing");
 }
 }
